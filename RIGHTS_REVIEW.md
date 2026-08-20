@@ -2,22 +2,40 @@
 
 **Gate:** G5 (licensing/provenance) — **STATUS: BLOCKED**
 
-Formal external rights/provenance review is outstanding for every entry below.
-This register is the durable record of each unresolved item. It is **not** a
-resolution of any legal/rights question; no item below may be treated as cleared
-until a named reviewer records a decision.
+**Review executed 2026-08-20.** Every lineage entry below received an evidence-based disposition
+(verified via GitHub API commit/license checks, candidate git-history searches, and harvest-commit
+file inspection). BLOCKED entries may not be treated as cleared until a named human reviewer
+records a decision. This register is the durable record.
 
-| ID | Source repo / commit / lineage | Source path(s) | Why review required | License / rights question | Evidence already collected | Required reviewer / decision | Remediation if rejected | Publication impact |
-|----|-------------------------------|----------------|---------------------|---------------------------|---------------------------|------------------------------|-------------------------|--------------------|
-| PROV-CAP-001 | `NORA-BITSY/nora-agent-platform` @ `43aea342` (Unlicensed) | `src/capabilities/registry.py`, `src/capabilities/compiler.py` → `src/nora_capabilities/registry.py`, `src/nora_capabilities/compiler.py` | Unlicensed internal monorepo package relicensed Apache-2.0; explicit sign-off required. | Was relicensing authorized? Any third-party code embedded in extracted modules? | SOURCE_PROVENANCE.yaml entry; secret/privacy/license scan pass (agent-level); `authorization_reference: INTERNAL_CLEANROOM_TRANSPLANT_PENDING_EXPLICIT_SIGN_OFF` | Named human reviewer with relicensing authority. | Re-derive/replace extracted modules; re-run gates. | Blocks publication of nora-capabilities (hard blocker per G5). |
-| PROV-CAP-002 | `NORA-BITSY/agent-control-plane` @ `69e120aa` (NOASSERTION) | `src/control/collision.py`, `src/control/config.py` → `src/nora_capabilities/collision.py`, `src/nora_capabilities/config.py` | Original license recorded as NOASSERTION; patterns extracted and relicensed Apache-2.0. | Is NOASSERTION source acceptable for relicensing? Any private operator/cloud endpoints leaked (extraction excluded them — verify)? | SOURCE_PROVENANCE.yaml entry; secret/privacy/license scan pass (agent-level); changes note "Excluded private operator and cloud endpoints"; `authorization_reference: INTERNAL_CLEANROOM_TRANSPLANT_PENDING_EXPLICIT_SIGN_OFF` | Named human reviewer; NOASSERTION source disposition decision. | Replace or re-derive affected patterns; re-run gates. | Blocks publication of nora-capabilities (hard blocker per G5). |
+## Verification record (2026-08-20)
 
-**Rights review pending items (inherited from evidence file):**
-- Canon licensing/version compatibility: confirm any Canon-referenced material is
-  license-compatible with Apache-2.0 target.
-- Synthetic redaction fixtures in history are asserted `[REDACTED]` by design (secret
-  scan "matches" are intentional fixture values — no real secrets).
+- Source commits checked with `gh api repos/{owner}/{repo}/commits/{sha}`.
+- Source licenses checked with `gh api repos/{owner}/{repo}/license` and by reading the top-level
+  file listing.
+- Contamination search (`git log --all -S`) across this repo for: RAGEmbed, Meridian-Canon,
+  NECCL, nora-canon, blakeox, legal-mcp, LawLLama, CC BY-NC, courtlistener-mcp, mcro-mcp,
+  agent-canon → **0 hits** (no Canon-referenced material entered this repo's history).
+- Harvested files inspected at harvest commits (`git show 3bef7af`, `git show 50fac9e`): small
+  derived implementations importing `nora_capabilities` contracts, docstring-attributed to sources;
+  not verbatim copies. No vendor directories.
+- Evidence artifacts: `/tmp/g5deep.log`, `/tmp/g5verify.log`, `/tmp/g5ev_nora-capabilities.log`.
+
+## Dispositions
+
+| ID | Source repo / commit | Source → target | License verification (2026-08-20) | Disposition | Required reviewer / decision |
+|----|----------------------|-----------------|-----------------------------------|-------------|------------------------------|
+| PROV-CAP-001 | `NORA-BITSY/nora-agent-platform` @ `43aea342` | `src/capabilities/registry.py`, `src/capabilities/compiler.py` → `src/nora_capabilities/registry.py`, `src/nora_capabilities/compiler.py` | Commit **EXISTS**. Source repo has **no LICENSE file**. | **BLOCKED — RIGHTS UNCLEAR** (unlicensed internal package relicensed Apache-2.0; sign-off required) | Named human reviewer: relicensing sign-off |
+| PROV-CAP-002 | `NORA-BITSY/agent-control-plane` @ `69e120aa` | `src/control/collision.py`, `src/control/config.py` → `src/nora_capabilities/collision.py`, `src/nora_capabilities/config.py` | Commit **DOES NOT EXIST** (GitHub 422 "No commit found"). Source repo has **no LICENSE file**. | **BLOCKED — SOURCE UNKNOWN** (recorded commit is a placeholder; NOASSERTION claim unverifiable) | Named human reviewer: pin real source commit + license, or authorize independent re-derivation |
+
+## Rights review pending items (2026-08-20)
+
+- Canon compatibility: contamination search found **no Canon-referenced material** in history;
+  the Canon licensing/version-compatibility concern is resolved for this candidate at the
+  contamination level.
+- agent-platform (PROV-CAP-001) and agent-control-plane (PROV-CAP-002): neither source repo
+  carries a license file; the latter's recorded commit does not exist on GitHub.
 
 **Status line (required closeout language):**
-Technical publication preparation complete. Formal rights/provenance review remains
-outstanding. Repository remains private. No visibility authorization has been granted.
+G5 rights/provenance review executed 2026-08-20 — **result: BLOCKED** (0/2 lineages clear).
+Repository remains private. No visibility authorization has been granted.
+**NOT READY FOR PUBLICATION — G5 RIGHTS/PROVENANCE BLOCKERS REMAIN.**
