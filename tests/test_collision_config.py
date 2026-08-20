@@ -8,6 +8,7 @@ def test_collision_resolver_and_config_renderer():
         capability_id="CAP-DUP",
         kind=CapabilityKind.TOOL,
         name="Search Tool",
+        description="Search tool description",
         version="0.0.1"
     )
     
@@ -15,6 +16,7 @@ def test_collision_resolver_and_config_renderer():
         capability_id="CAP-DUP",
         kind=CapabilityKind.TOOL,
         name="Search Tool",
+        description="Search tool description v2",
         version="0.0.2"
     )
     
@@ -26,6 +28,7 @@ def test_collision_resolver_and_config_renderer():
         capability_id="CAP-SECRET",
         kind=CapabilityKind.MCP,
         name="MCP Private Tool",
+        description="Private tool description",
         permission_tier=PermissionTier.HIGH_RISK_ADMIN,
         trust_state=TrustState.AUTHORIZED,
         metadata={"api_key": "secret_token_val_123", "endpoint": "https://api.public.org"}
