@@ -1,2 +1,25 @@
-version: '1.0'
-entries: []
+version: 1.0.0
+entries:
+  - id: PROV-CAP-001
+    source:
+      repository: NORA-BITSY/nora-agent-platform
+      commit: 43aea342
+      paths:
+        - src/capabilities/registry.py
+        - src/capabilities/compiler.py
+    origin_status: nora-authored
+    original_license: Unlicensed
+    target:
+      repository: NORAFoundation/nora-capabilities
+      paths:
+        - src/nora_capabilities/registry.py
+        - src/nora_capabilities/compiler.py
+    treatment: REFACTOR_EXTRACT
+    changes:
+      - Extracted capability registration and schema compilation from agent platform monorepo
+      - Enforced TrustState.AUTHORIZED check before schema compilation
+    review:
+      secret_scan: pass
+      privacy_scan: pass
+      license_review: pass
+      reviewer: migration-agent
