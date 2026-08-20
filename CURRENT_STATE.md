@@ -1,11 +1,11 @@
 # Current State — nora-capabilities
 
-**Status:** IMPLEMENTED (Minimum Vertical Slice Verified)  
-**Version:** 0.0.1  
+**Status:** OSS EXTRACTION / RECONCILIATION IN PROGRESS
+**Version:** 0.0.1
 
-## Implemented Vertical Slice
+## Implemented Reference Slice
 
-The required minimum vertical slice is complete and verified:
+The minimum reference vertical slice is complete and verified:
 `manifest -> trust -> permission grant -> execution descriptor -> client adapters`
 
 - `src/nora_capabilities/contracts.py`: Dataclasses for `CapabilityManifest`, `PermissionTier`, `TrustState`, `CapabilityKind`, and `HumanConfirmationRule`.
@@ -15,7 +15,15 @@ The required minimum vertical slice is complete and verified:
 - `src/nora_capabilities/config.py`: `CapabilityConfigRenderer` sanitizing sensitive credentials and private cloud parameters.
 - `src/nora_capabilities/trust.py`: `TrustLifecycleValidator` enforcing least-privilege audit and authorization constraints.
 
-## Verification Evidence
+## Verified
 
 - `make test` / `pytest`: **6 passed in 0.12s**.
-- Full end-to-end capability manifest registration, trust transition, client schema compilation, and safe config rendering verified in `tests/test_vertical_slice.py`.
+- Vertical-slice test path: `tests/test_vertical_slice.py`.
+- End-to-end capability manifest registration, trust transition, client schema compilation, and safe config rendering verified.
+
+## Not Yet Established
+
+- canonical feature parity;
+- public extraction completeness;
+- production deployment status;
+- resolution of unlicensed internal lineage (`nora-agent-platform` / `agent-control-plane`).
