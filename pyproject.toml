@@ -2,14 +2,19 @@
 requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/nora_capabilities"]
+
 [project]
 name = "nora_capabilities"
 version = "0.0.1"
-description = "Provider-neutral capability governance for MCP servers, Skills, tools, agents, workflows, models, and packs."
+description = "Universal capability manifest format, permission model, side-effect isolation, trust lifecycle, and adapter system."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
-dependencies = []
+dependencies = [
+  "pydantic>=2.0"
+]
 
 [project.optional-dependencies]
 dev = [
