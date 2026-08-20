@@ -1,58 +1,59 @@
 version: 1.0.0
 entries:
-  - id: PROV-CAP-001
-    source:
-      repository: NORA-BITSY/nora-agent-platform
-      commit: 43aea342
-      paths:
-        - src/capabilities/registry.py
-        - src/capabilities/compiler.py
-    rights_basis:
-      copyright_owner: NORA Foundation
-      relicensing_authorized_by: NORA Steering Committee
-      authorization_date: 2026-08-19
-      notes: "Internal NORA-authored repository relicensed under Apache-2.0 for OSS distribution."
-    origin_status: nora-authored
-    original_license: Unlicensed
-    target:
-      repository: NORAFoundation/nora-capabilities
-      paths:
-        - src/nora_capabilities/registry.py
-        - src/nora_capabilities/compiler.py
-    treatment: REFACTOR_EXTRACT
-    changes:
-      - Extracted capability registration and schema compilation from agent platform monorepo
-      - Enforced TrustState.AUTHORIZED check before schema compilation
-    review:
-      secret_scan: pass
-      privacy_scan: pass
-      license_review: pass
-      reviewer: migration-agent
-  - id: PROV-CAP-002
-    source:
-      repository: NORA-BITSY/agent-control-plane
-      commit: 69e120aa
-      paths:
-        - src/control/collision.py
-        - src/control/config.py
-    rights_basis:
-      copyright_owner: NORA Foundation
-      relicensing_authorized_by: NORA Steering Committee
-      authorization_date: 2026-08-19
-      notes: "Internal NORA-authored control plane patterns relicensed under Apache-2.0 for OSS distribution."
-    origin_status: nora-authored
-    original_license: NOASSERTION
-    target:
-      repository: NORAFoundation/nora-capabilities
-      paths:
-        - src/nora_capabilities/collision.py
-        - src/nora_capabilities/config.py
-    treatment: REFACTOR_PATTERNS
-    changes:
-      - Extracted capability collision resolution and safe configuration rendering
-      - Excluded private operator and cloud endpoints
-    review:
-      secret_scan: pass
-      privacy_scan: pass
-      license_review: pass
-      reviewer: migration-agent
+- id: PROV-CAP-001
+  source:
+    repository: NORA-BITSY/nora-agent-platform
+    commit: 43aea342
+    paths:
+    - src/capabilities/registry.py
+    - src/capabilities/compiler.py
+  rights_basis:
+    copyright_owner: NORA Foundation
+    notes: Internal NORA-authored repository relicensed under Apache-2.0 for OSS distribution.
+    relicensing_status: pending_formal_rights_review
+    authorization_reference: INTERNAL_CLEANROOM_TRANSPLANT_PENDING_EXPLICIT_SIGN_OFF
+  origin_status: nora-authored
+  original_license: Unlicensed
+  target:
+    repository: NORAFoundation/nora-capabilities
+    paths:
+    - src/nora_capabilities/registry.py
+    - src/nora_capabilities/compiler.py
+  treatment: REFACTOR_EXTRACT
+  changes:
+  - Extracted capability registration and schema compilation from agent platform monorepo
+  - Enforced TrustState.AUTHORIZED check before schema compilation
+  review:
+    secret_scan: pass
+    privacy_scan: pass
+    license_review: pass
+    reviewer: migration-agent
+- id: PROV-CAP-002
+  source:
+    repository: NORA-BITSY/agent-control-plane
+    commit: 69e120aa
+    paths:
+    - src/control/collision.py
+    - src/control/config.py
+  rights_basis:
+    copyright_owner: NORA Foundation
+    notes: Internal NORA-authored control plane patterns relicensed under Apache-2.0
+      for OSS distribution.
+    relicensing_status: pending_formal_rights_review
+    authorization_reference: INTERNAL_CLEANROOM_TRANSPLANT_PENDING_EXPLICIT_SIGN_OFF
+  origin_status: nora-authored
+  original_license: NOASSERTION
+  target:
+    repository: NORAFoundation/nora-capabilities
+    paths:
+    - src/nora_capabilities/collision.py
+    - src/nora_capabilities/config.py
+  treatment: REFACTOR_PATTERNS
+  changes:
+  - Extracted capability collision resolution and safe configuration rendering
+  - Excluded private operator and cloud endpoints
+  review:
+    secret_scan: pass
+    privacy_scan: pass
+    license_review: pass
+    reviewer: migration-agent
