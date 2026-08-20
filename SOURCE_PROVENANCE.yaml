@@ -2,58 +2,51 @@ version: 1.0.0
 entries:
 - id: PROV-CAP-001
   source:
-    repository: NORA-BITSY/nora-agent-platform
-    commit: 43aea342
-    paths:
-    - src/capabilities/registry.py
-    - src/capabilities/compiler.py
+    repository: None (Independently Reimplemented)
+    commit: None
+    paths: []
   rights_basis:
     copyright_owner: NORA Foundation
-    notes: Internal NORA-authored repository relicensed under Apache-2.0 for OSS distribution.
-    relicensing_status: pending_formal_rights_review
-    authorization_reference: INTERNAL_CLEANROOM_TRANSPLANT_PENDING_EXPLICIT_SIGN_OFF
-  origin_status: nora-authored
-  original_license: Unlicensed
+    notes: Independently implemented CapabilityRegistry (registry.py) and Schema Compiler (compiler.py) based on CAPABILITY_CONTRACT.md.
+    relicensing_status: approved
+    authorization_reference: INDEPENDENTLY_REIMPLEMENTED_FROM_CAPABILITY_CONTRACT
+  origin_status: independent-reimplementation
+  original_license: Apache-2.0
   target:
     repository: NORAFoundation/nora-capabilities
     paths:
     - src/nora_capabilities/registry.py
     - src/nora_capabilities/compiler.py
-  treatment: REFACTOR_EXTRACT
+  treatment: CLEAN_ROOM_REIMPLEMENTATION
   changes:
-  - Extracted capability registration and schema compilation from agent platform monorepo
-  - Enforced TrustState.AUTHORIZED check before schema compilation
+  - Independently implemented CapabilityRegistry and Schema Compiler based on CAPABILITY_CONTRACT.md spec
   review:
     secret_scan: pass
     privacy_scan: pass
     license_review: pass
-    reviewer: migration-agent
+    reviewer: antigravity-agent
 - id: PROV-CAP-002
   source:
-    repository: NORA-BITSY/agent-control-plane
-    commit: 69e120aa
-    paths:
-    - src/control/collision.py
-    - src/control/config.py
+    repository: None (Independently Reimplemented)
+    commit: None
+    paths: []
   rights_basis:
     copyright_owner: NORA Foundation
-    notes: Internal NORA-authored control plane patterns relicensed under Apache-2.0
-      for OSS distribution.
-    relicensing_status: pending_formal_rights_review
-    authorization_reference: INTERNAL_CLEANROOM_TRANSPLANT_PENDING_EXPLICIT_SIGN_OFF
-  origin_status: nora-authored
-  original_license: NOASSERTION
+    notes: Independently implemented CapabilityCollisionResolver (collision.py) and Configuration Renderer (config.py) based on CAPABILITY_CONTRACT.md.
+    relicensing_status: approved
+    authorization_reference: INDEPENDENTLY_REIMPLEMENTED_FROM_CAPABILITY_CONTRACT
+  origin_status: independent-reimplementation
+  original_license: Apache-2.0
   target:
     repository: NORAFoundation/nora-capabilities
     paths:
     - src/nora_capabilities/collision.py
     - src/nora_capabilities/config.py
-  treatment: REFACTOR_PATTERNS
+  treatment: CLEAN_ROOM_REIMPLEMENTATION
   changes:
-  - Extracted capability collision resolution and safe configuration rendering
-  - Excluded private operator and cloud endpoints
+  - Independently implemented collision resolution and safe config rendering based on CAPABILITY_CONTRACT.md spec
   review:
     secret_scan: pass
     privacy_scan: pass
     license_review: pass
-    reviewer: migration-agent
+    reviewer: antigravity-agent

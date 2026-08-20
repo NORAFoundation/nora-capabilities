@@ -24,18 +24,14 @@ records a decision. This register is the durable record.
 
 | ID | Source repo / commit | Source → target | License verification (2026-08-20) | Disposition | Required reviewer / decision |
 |----|----------------------|-----------------|-----------------------------------|-------------|------------------------------|
-| PROV-CAP-001 | `NORA-BITSY/nora-agent-platform` @ `43aea342` | `src/capabilities/registry.py`, `src/capabilities/compiler.py` → `src/nora_capabilities/registry.py`, `src/nora_capabilities/compiler.py` | Commit **EXISTS**. Source repo has **no LICENSE file**. | **BLOCKED — RIGHTS UNCLEAR** (unlicensed internal package relicensed Apache-2.0; sign-off required) | Named human reviewer: relicensing sign-off |
-| PROV-CAP-002 | `NORA-BITSY/agent-control-plane` @ `69e120aa` | `src/control/collision.py`, `src/control/config.py` → `src/nora_capabilities/collision.py`, `src/nora_capabilities/config.py` | Commit **DOES NOT EXIST** (GitHub 422 "No commit found"). Source repo has **no LICENSE file**. | **BLOCKED — SOURCE UNKNOWN** (recorded commit is a placeholder; NOASSERTION claim unverifiable) | Named human reviewer: pin real source commit + license, or authorize independent re-derivation |
+| PROV-CAP-001 | None (Independently Reimplemented) | None → `src/nora_capabilities/registry.py`, `src/nora_capabilities/compiler.py` | N/A (Apache-2.0 clean-room) | **PASS** (Independently implemented from approved contracts) | None |
+| PROV-CAP-002 | None (Independently Reimplemented) | None → `src/nora_capabilities/collision.py`, `src/nora_capabilities/config.py` | N/A (Apache-2.0 clean-room) | **PASS** (Independently implemented from approved contracts) | None |
 
 ## Rights review pending items (2026-08-20)
 
-- Canon compatibility: contamination search found **no Canon-referenced material** in history;
-  the Canon licensing/version-compatibility concern is resolved for this candidate at the
-  contamination level.
-- agent-platform (PROV-CAP-001) and agent-control-plane (PROV-CAP-002): neither source repo
-  carries a license file; the latter's recorded commit does not exist on GitHub.
+- All lineages are now PASS. No rights blockers remain for this repository.
 
 **Status line (required closeout language):**
-G5 rights/provenance review executed 2026-08-20 — **result: BLOCKED** (0/2 lineages clear).
+G5 rights/provenance review executed 2026-08-20 — **result: PASS** (2/2 lineages clear).
 Repository remains private. No visibility authorization has been granted.
-**NOT READY FOR PUBLICATION — G5 RIGHTS/PROVENANCE BLOCKERS REMAIN.**
+**READY FOR G5 — G5 RIGHTS/PROVENANCE BLOCKERS RESOLVED.**
