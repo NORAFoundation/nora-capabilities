@@ -14,6 +14,13 @@ The minimum reference vertical slice is complete and verified:
 - `src/nora_capabilities/collision.py`: `CapabilityCollisionResolver` handling version and naming collisions.
 - `src/nora_capabilities/config.py`: `CapabilityConfigRenderer` sanitizing sensitive credentials and private cloud parameters.
 - `src/nora_capabilities/trust.py`: `TrustLifecycleValidator` enforcing least-privilege audit and authorization constraints.
+## Contract Targets — Not Yet Implemented
+
+The following symbols are defined in broader specifications but have no implementation in the current codebase:
+
+- `CapabilityAdapter` — generic adapter for external capability providers (e.g., cloud services)
+- `MCPIntegration` — integration layer with the NORA Agent Platform for dynamic capability discovery
+- `ToolBackend` — runtime execution backend for tool commands (currently only CLI stub)
 
 ## Verified
 
